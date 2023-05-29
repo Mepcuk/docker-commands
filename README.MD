@@ -11,13 +11,11 @@ usermod -aG docker username
 Check which groups are exist created user -> Print out applyed groups
 ```
 id username
-``
+```
 
 Check if user can run docker
 
 ```
 su - username
-```
-```
 docker --version
 ```
