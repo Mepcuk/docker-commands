@@ -1,5 +1,22 @@
 ## Create user in docker group and check permissions
 
+Run docker container -d (detached mode - demon mode) --rm(remove container after stop or kill - usefull for development) --name (name of container, by default will be hacker or scientist name-surname)
+```
+docker run -d --rm --name ContainerName ubuntu:20.04 -s /bin/bash username
+```
+
+## Docker logs
+Tail last logs
+```
+docker logs (image name or name or container ID(* you can type first symbol of container id) )
+```
+LIVE logs add key -f (follow)
+```
+docker logs -f (image name or name or container ID(* you can type first symbol of container id) )
+```
+
+## Create user in docker group and check permissions
+
 Create docker user (-m create homecategory)
 ```
 useradd -m -s /bin/bash username
@@ -51,4 +68,16 @@ docker inspect (image name or name or container ID(* you can type first symbol o
 ## Docker resourse statistics
 ```
 docker stats (image name or name or container ID(* you can type first symbol of container id) )
+```
+
+
+## Remove all images and STOPPED container
+Main idea
+1) Stop container `docker stop (image name or name or container ID(* you can type first symbol of container id) )`
+2) Remove container `docker rm (image name or name or container ID(* you can type first symbol of container id) )`
+3) Remove Image ` docker rmi (image name or name or container ID(* you can type first symbol of container id) )`
+
+To remove all stopped containers and images -a(remove images) --volumes(remove persistent data - volumes)
+```
+docker system prune -a --volumes (image name or name or container ID(* you can type first symbol of container id) )
 ```
