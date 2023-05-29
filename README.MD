@@ -59,6 +59,17 @@ docker rm (image name or name or container ID(* you can type first symbol of con
 ```
 
 
+## Docker enviroment variables
+1) Go inside container (container name) in -it(interactive mode) and run bash
+```
+docker exec -it (image name or name or container ID(* you can type first symbol of container id) ) /bin/bash
+```
+2) Inside container enviroment variables
+```
+env
+```
+
+
 ## Docker inspect how build container
 ```
 docker inspect (image name or name or container ID(* you can type first symbol of container id) )
@@ -80,4 +91,37 @@ Main idea
 To remove all stopped containers and images -a(remove images) --volumes(remove persistent data - volumes)
 ```
 docker system prune -a --volumes (image name or name or container ID(* you can type first symbol of container id) )
+```
+
+
+## Docker port forwarding mapping inside docker to "world"
+Check open connection on server
+```
+netstat -tulpen
+```
+
+Check ethernet interfaces and IP
+```
+ip a
+```
+
+## Docker network
+# network types
+1) macvlan - IP and MAC will be different
+2) ipvlan - IP will be different but MAC the same
+3) none - no network (not possible to connect form world or inside)
+4) host - IP the same as server
+5) bridge - connect from "qorld" if use port forwarding 80 `-p 80:80`
+```
+docker network create -d bridge --subnet 192.168.10.0/24 --gateway 192.168.10.1 myNetworkName
+```
+
+Check available networks
+```
+docker network ls
+```
+
+Inspect - networks details
+```
+docker network inspect (network name myNetworkName)
 ```
