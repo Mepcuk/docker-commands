@@ -115,6 +115,11 @@ ip a
 ```
 docker network create -d bridge --subnet 192.168.10.0/24 --gateway 192.168.10.1 myNetworkName
 ```
+Create MACVLAN network with IP 192.168.100.99
+```
+docker network create -d macvlan (-d driver) --subnet 192.168.100.0/24 --gateway 192.168.100.1 --ip-range 192.168.100.99/32 -o parent=ens18 (ens18 - network inteface) MACNetworkName
+```
+
 
 Check available networks
 ```
@@ -126,7 +131,6 @@ Inspect - networks details
 docker network inspect (network name myNetworkName)
 ```
 
-
 Connect container to network
 ```
 docker network connect (network name myNetworkName) (container name or id)
@@ -135,4 +139,16 @@ docker network connect (network name myNetworkName) (container name or id)
 Disconnect container to network
 ```
 docker network disconnect (networkID - can get NetworkID `docker inspect (container name)`) (container name or id)
+```
+
+## Docker images
+1) Create dockerfile `touch dockerfile`
+2) Edit with vim `vi dockerfile` and add some instructions `FROM ubuntu:22.04 CMD ["echo", "Echo message"]`
+3) Build image `docker build .`
+4) Check unnamed docker-image `docker images`
+5) Update - revise tag and version `docker tag (image name or ID) imagename:v1`
+
+To build with tag add `-t` to build with image repository name and image tag
+```
+docker build -t imagename:v1
 ```
