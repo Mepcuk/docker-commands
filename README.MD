@@ -125,3 +125,14 @@ Inspect - networks details
 ```
 docker network inspect (network name myNetworkName)
 ```
+
+
+Connect container to network
+```
+docker network connect (network name myNetworkName) (container name or id)
+```
+
+Disconnect container to network
+```
+docker network disconnect (networkID - can get NetworkID `docker inspect (container name)`) (container name or id)
+```
