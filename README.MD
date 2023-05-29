@@ -17,5 +17,7 @@ Check if user can run docker
 
 ```
 su - username
+```
+```
 docker --version
 ```
